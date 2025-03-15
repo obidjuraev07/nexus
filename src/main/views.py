@@ -10,6 +10,11 @@ def main(request):
     print(products)
     ctx = {
         "categories": categories,
-        "products": products
+        "products": products,
+        "a" : 1234567890
     }
     return render(request, 'index.html', ctx)
+
+#
+# for i in range(3):
+#     print("salom")
