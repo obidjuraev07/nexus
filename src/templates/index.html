@@ -110,7 +110,7 @@
                                 <a href="#"><i class="lni-tag"></i> {{ product.brand}}</a>
                                 </span>
                         </div>
-                        <p class="dsc">{{ product.description }}.</p>
+                        <p class="dsc">{{ product.description|safe  }}.</p>
                         <div class="listing-bottom">
                             <h3 class="price float-left">${{ product.price }}</h3>
                             <a href="{% url 'product-detail' pk=product.id %}" class="btn btn-common float-right">View Details</a>

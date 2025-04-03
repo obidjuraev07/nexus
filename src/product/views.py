@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Prefetch
 from django.core.paginator import Paginator
 from .models import Product, ProductImage
+from .forms import ProductForm
 
 
 def product_list(request):
@@ -25,3 +26,23 @@ def product_detail(request, pk):
 
     }
     return render(request, 'detail.html', ctx)
+
+def product_add(request):
+
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        print(form)
+        print(form.is_valid())
+        if form.is_valid():
+            product = form.save(commit=False)
+            print('USER', request.user.profile)
+            product.user = request.user.profile
+            product.save()
+            return redirect('main')
+    else:
+        form = ProductForm()
+    ctx = {
+        "form": form
+    }
+
+    return render(request, 'product_add.html', ctx)

@@ -46,3 +46,4 @@ class ProductImage(models.Model):
     is_main = models.BooleanField(default=False)
 
 
+
