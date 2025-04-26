@@ -17,7 +17,9 @@ def product_list(request):
         "page_obj": page_obj,
         'count': paginator.count
     }
-    return render(request, 'products.html', ctx)
+    # return render(request, 'products.html', ctx)
+
+    return ctx
 
 
 def product_detail(request, pk):
